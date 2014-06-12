@@ -223,14 +223,15 @@ nav {
     margin: 0; }
 
 .item2 {
-  position: relative; }
+  position: relative;
+  font-size: 18px; }
 
 ul li.menuItem {
   display: inline-block;
   cursor: pointer; }
 
 ul li.menuItem:nth-child(2n) {
-  margin: 0 75px; }
+  margin: 0 50px; }
 
 ul.legend {
   z-index: 999;
