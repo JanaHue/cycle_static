@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cycling App</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+</head>
+<body>
+	
+	<header>
+		<div class="innerWrapper">
+		<h1>Cycling App</h1>
+			<!-- <div class="logo"></div> -->
+			<form action="">
+				<label for="start">Route Start</label>
+				<input type="text" class="start">
+				<label for="end">Route Finish</label>
+				<input type="text" class="end">
+				<input type="submit" class="route" value="fa fa-bolt"></i>
+			</form>
+			<nav>
+				<ul class="nav">
+					<li class="menuItem item1" id="item1"><i class="fa fa-map-marker"></i></li>
+					<li class="menuItem item2" id="item2"><i class="fa fa-life-ring"></i>
+						<ul class="legend">
+							<li class="legendKey"><i class="fa fa-minus trail"></i>Trails</li>
+							<li class="legendKey"><i class="fa fa-minus lane"></i>Dedicated Lanes</li>
+							<li class="legendKey"><i class="fa fa-ellipsis-h friendly"></i>Bicycle Friendly</li>
+							<li class="legendKey"><i class="fa fa-ellipsis-h trouble"></i>Trouble Spots</li>
+						</ul>
+					</li>
+					<li class="menuItem item3" id="item3"><i class="fa fa-question-circle"></i></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div id="map-canvas"></div>
+
+	<div class="overlay overlay1 closeIt">
+		<div class="modal modal1">
+		 	<img class="close closeIt" src="i/icon_45886.png"/>
+		  <div class="options">
+		    <div class="first">
+		      <p>1. Type of Issue</p>
+		      <select>
+		        <option selected="selected">Select an obstacle</option>
+		        <option value="pothole">Pothole</option>
+		        <option value="angry-driver">Angry Driver</option>
+		        <option value="mercedes">Mercedes</option>
+		        <option value="audi">Audi</option>
+		      </select>
+		    </div> <!-- end of first div -->
+		    <div class="second">
+		      <p>2. Time of day</p>
+		      <select>
+		        <option selected="Select a time of day">Select a time of day</option>
+		        <option value="morning">Morning</option>
+		        <option value="afternoon">Afternoon</option>
+		        <option value="evening">Evening</option>
+		      </select>
+		    </div>
+		    <!-- end of second div -->
+		    <div class="third">
+		      <p>3. Locate Issue in Map</p>
+		      <button type="button" class="closeIt">Locate</button>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+	<div class="overlay overlay2 closeIt">
+		<div class="modal modal2">
+			<img class="close closeIt" src="i/icon_45886.png"/>
+	    <h2>Welcome!</h2>
+		  <div class="intro">
+		    <a href="#"><img src="i/icon_8603.png" class="left-arrow" /></a>
+		    <img src="i/kitten.jpeg" class="kitten-image"/>
+		    <a href="#"><img src="i/icon_8604.png" class="right-arrow" /></a>
+		  </div>
+		  <button class="closeIt" type="button">Don't show again</button>
+		</div>
+	</div>
+	<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCON7pYLKhdqpsuLpQ8ZvJbi80ZmPV2y4Q"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="script.js"></script>
+	
+</body>
+</html>
