@@ -1,9 +1,9 @@
 jQuery(function($){
 	// $(".overlay2").show();
-
+	var map, pointarray, heatmap, directionsDisplay, directionsService, stepDisplay;
+	var markerArray = [];
 	function initialize() {
-			var map, pointarray, heatmap, directionsDisplay, directionsService, stepDisplay;
-			var markerArray = [];
+
         // heatspot data
         var taxiData = [
         new google.maps.LatLng(43.64678970890272, -79.39536094665527),
@@ -27,34 +27,34 @@ jQuery(function($){
         new google.maps.LatLng(43.646, -79.39536094665527),
         new google.maps.LatLng(43.646, -79.39536094665527),
         ]
-	    var mapOptions = {
+	    	var mapOptions = {
 	      center: new google.maps.LatLng(43.654638 ,-79.382772),
 	      zoom: 14
-	    };
-	    var map = new google.maps.Map(document.getElementById("map-canvas"),
-	        mapOptions);
+	    	};
+	   		var map = new google.maps.Map(document.getElementById("map-canvas"),
+	      mapOptions);
 
-	    var bikeLayer = new google.maps.BicyclingLayer();
-	     bikeLayer.setMap(map);
+	    	var bikeLayer = new google.maps.BicyclingLayer();
+	    	bikeLayer.setMap(map);
 	      // var trafficLayer = new google.maps.TrafficLayer();
         // trafficLayer.setMap(map);
 
-      var pointArray = new google.maps.MVCArray(taxiData);
+      	var pointArray = new google.maps.MVCArray(taxiData);
 
-      heatmap = new google.maps.visualization.HeatmapLayer({
+     		heatmap = new google.maps.visualization.HeatmapLayer({
         data: pointArray
-      });
-      heatmap.setMap(map);
+      	});
+      	heatmap.setMap(map);
 
-      var infowindow = new google.maps.InfoWindow();
+      	var infowindow = new google.maps.InfoWindow();
       // alert when click
-     google.maps.event.addListener(map, 'click', function(event) {
+     		google.maps.event.addListener(map, 'click', function(event) {
         alert('Is this the spot?' + event.latLng);
         taxiData.push("new google.maps.LatLng" + event.latLng);
         // console.log(taxiData);
-          });
+        });
      	// directions services
-     	 directionsService = new google.maps.DirectionsService();
+     	  directionsService = new google.maps.DirectionsService();
      	  var rendererOptions = {
     		map: map
   			}
@@ -62,7 +62,7 @@ jQuery(function($){
 
   // Instantiate an info window to hold step text.
   			stepDisplay = new google.maps.InfoWindow();
-	};
+		};// Close Initialize
 
 function calcRoute() {
 
@@ -93,7 +93,9 @@ function calcRoute() {
       showSteps(response);
     }
   });
-};
+  console.log(start);
+  alert("hi");
+}; // Close calcRoute
 
 
 function showSteps(directionResult) {
@@ -110,8 +112,8 @@ function showSteps(directionResult) {
     });
     attachInstructionText(marker, myRoute.steps[i].instructions);
     markerArray[i] = marker;
-  }
-}
+  };
+} //Close showSteps
 
 function attachInstructionText(marker, text) {
   google.maps.event.addListener(marker, 'click', function() {
@@ -120,9 +122,8 @@ function attachInstructionText(marker, text) {
     stepDisplay.setContent(text);
     stepDisplay.open(map, marker);
   });
-}
-console.log(start);
-
+} //close attachInstructionText
+// console.log(start);
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -158,7 +159,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		}
 	});
 
-$("form.search").on("submit",function(){
-calcRoute();
+	$("form.search").on("submit",function(){
+	calcRoute();
 	});
-});
+})
