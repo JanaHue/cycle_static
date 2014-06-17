@@ -57,7 +57,7 @@ jQuery(function($){
      	  directionsService = new google.maps.DirectionsService();
      	  var rendererOptions = {
     		map: map
-  			}
+  			};
   			directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
   // Instantiate an info window to hold step text.
@@ -93,8 +93,6 @@ function calcRoute() {
       showSteps(response);
     }
   });
-  console.log(start);
-  alert("hi");
 }; // Close calcRoute
 
 
