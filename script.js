@@ -36,31 +36,35 @@ jQuery(function($){
 
 	    	var bikeLayer = new google.maps.BicyclingLayer();
 	    	bikeLayer.setMap(map);
-	      // var trafficLayer = new google.maps.TrafficLayer();
-        // trafficLayer.setMap(map);
 
-      	var pointArray = new google.maps.MVCArray(taxiData);
+        $.ajax({
+            url: "_drupal/api/hot_spot.json",
+            dataType: "json",
+            success: function(data) {
+                var yieldPoints = [];
+                for(i=0; i < data.length; i++) {
+                    yieldPoints[i] = { location: new google.maps.LatLng(data[i].lat, data[i].long) };
+                }
+                var heatMap = new google.maps.visualization.HeatmapLayer({ data: yieldPoints });
+                heatMap.setMap(map);
+            }
+        });
 
-     		heatmap = new google.maps.visualization.HeatmapLayer({
-        data: pointArray
-      	});
-      	heatmap.setMap(map);
 
       	var infowindow = new google.maps.InfoWindow();
-      // alert when click
+        // alert when click
      		google.maps.event.addListener(map, 'click', function(event) {
         alert('Is this the spot?' + event.latLng);
         taxiData.push("new google.maps.LatLng" + event.latLng);
-        // console.log(taxiData);
         });
-     	// directions services
+     	  // directions services
      	  directionsService = new google.maps.DirectionsService();
      	  var rendererOptions = {
     		map: map
   			};
   			directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
-  // Instantiate an info window to hold step text.
+        // Instantiate an info window to hold step text.
   			stepDisplay = new google.maps.InfoWindow();
 		};// Close Initialize
 
@@ -96,6 +100,11 @@ function calcRoute() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+
+ 
+
+
+
 	//show legend
 	$(".item2").on("click", function(){
 		$("ul.legend").slideToggle(100);
@@ -129,7 +138,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	});
 
 	$("form.search").on("submit",function(e){
-    debugger;
     e.preventDefault();
 	  calcRoute();
 	});
