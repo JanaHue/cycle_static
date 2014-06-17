@@ -157,7 +157,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		}
 	});
 
-	$("form.search").on("submit",function(){
-	calcRoute();
+	$("form.search").on("submit",function(e){
+    debugger;
+    e.preventDefault();
+	  calcRoute();
 	});
 })
