@@ -1,5 +1,5 @@
 jQuery(function($){
-	// $(".overlay2").show();
+	$(".overlay2").show();
 	var map, pointarray, heatmap, directionsDisplay, directionsService, stepDisplay;
 	var markerArray = [];
 	function initialize() {
@@ -101,7 +101,7 @@ function calcRoute() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
- 
+
 
 
 

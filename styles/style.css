@@ -1,5 +1,5 @@
 /*====================================================================================
-                      Normalize 
+                      Normalize
 ====================================================================================*/
 html {
   font-family: sans-serif;
@@ -161,10 +161,10 @@ img {
   max-width: 100%; }
 
 /*====================================================================================
-		                          Variables 
+		                          Variables
 ====================================================================================*/
 /*====================================================================================
-		                          Base Styles 
+		                          Base Styles
 ====================================================================================*/
 html {
   height: 100%; }
@@ -186,7 +186,7 @@ ul {
   padding: 0; }
 
 /*====================================================================================
-		                          Header 
+		                          Header
 ====================================================================================*/
 header {
   padding: 25px;
@@ -262,7 +262,7 @@ i {
   color: orange; }
 
 /*====================================================================================
-		                          Modals 
+		                          Modals
 ====================================================================================*/
 .overlay {
   z-index: 999;
@@ -283,12 +283,26 @@ i {
       display: block;
       margin: 0 auto; }
     .overlay .modal h2 {
-      text-align: center; }
+      font-size: 2em; }
     .overlay .modal .close {
       margin: 10px;
       height: 30px;
       width: 30px;
       float: right; }
+    .overlay .modal p {
+      clear: both;
+      text-align: center; }
+  .overlay .littleBike {
+    width: 15%;
+    height: auto;
+    float: left;
+    margin: 4%;
+    margin-right: none;
+    margin-bottom: none; }
+  .overlay .firstP {
+    font-size: 1.4em; }
+  .overlay .reportIssue {
+    margin: 40px; }
 
 .options {
   text-align: center;
@@ -312,3 +326,6 @@ i {
   height: 40px;
   position: relative;
   bottom: 105px; }
+
+#fake {
+  display: inline; }
