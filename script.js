@@ -49,14 +49,56 @@ jQuery(function($){
                 heatMap.setMap(map);
             }
         });
+        	
 
-
-      	var infowindow = new google.maps.InfoWindow();
-        // alert when click
-     		google.maps.event.addListener(map, 'click', function(event) {
-        alert('Is this the spot?' + event.latLng);
-        taxiData.push("new google.maps.LatLng" + event.latLng);
+        $("form.options").on("submit", function(e){
+          var obstacle = $("select.obstacle").val();
+          var time = $( "select.time" ).val();
+          e.preventDefault();
+          // alert when click
+       		var makeClickable = google.maps.event.addListener(map, 'click', function(event) {
+            var cc = confirm('Is this the spot?' + event.latLng);
+            console.log(event.latLng);
+            var lat = event.latLng['k'];
+            var lon = event.latLng['A'];
+            if (cc == true) {
+              var nodeData = {
+                 title: "spot 4",
+                 type: "hot_spots",
+                 field_lat: {
+                   und: [
+                   {
+                     value: lat,
+                   }
+                   ]
+                 },
+                 field_long: {
+                   und: [
+                   {
+                     value: lon,
+                   }
+                   ]
+                 }
+               };
+               $.ajax({
+                 url: "_drupal/api/node.json",
+                 dataType: "json",
+                 type: "POST",
+                 data: nodeData,
+                 success: function(data){
+                  alert("thanks");
+                 }
+               });
+              google.maps.event.clearInstanceListeners(map);
+              document.getElementById("options").reset();
+            } else {
+              $("select.obstacle").val(obstacle);
+              $("select.time").val(time);
+              $(".overlay1").fadeIn();
+            };
+          });
         });
+
      	  // directions services
      	  directionsService = new google.maps.DirectionsService();
      	  var rendererOptions = {
@@ -64,8 +106,10 @@ jQuery(function($){
   			};
   			directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
+        // var infowindow = new google.maps.InfoWindow();
         // Instantiate an info window to hold step text.
-  			stepDisplay = new google.maps.InfoWindow();
+  			// stepDisplay = new google.maps.InfoWindow();
+
 		};// Close Initialize
 
 function calcRoute() {
@@ -102,8 +146,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
  
-
-
+  
 
 	//show legend
 	$(".item2").on("click", function(){
@@ -112,6 +155,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 	//open issue submission modal
 	$(".item1").on("click", function(){
+    document.getElementById("options").reset();
 		$(".overlay1").fadeIn();
 	});
 
@@ -141,4 +185,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
     e.preventDefault();
 	  calcRoute();
 	});
+
 })

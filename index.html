@@ -1,4 +1,4 @@
-<!doctype html>
+	<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -42,10 +42,10 @@
 	<div class="overlay overlay1 closeIt">
 		<div class="modal modal1">
 		 	<img class="close closeIt" src="i/icon_45886.png"/>
-		  <div class="options">
+		  <form id="options" class="options">
 		    <div class="first">
 		      <p>1. Type of Issue</p>
-		      <select>
+		      <select class="obstacle">
 		        <option selected="selected">Select an obstacle</option>
 		        <option value="pothole">Pothole</option>
 		        <option value="angry-driver">Angry Driver</option>
@@ -55,17 +55,17 @@
 		    </div> <!-- end of first div -->
 		    <div class="second">
 		      <p>2. Time of day</p>
-		      <select>
+		      <select class="time">
 		        <option selected="Select a time of day">Select a time of day</option>
 		        <option value="morning">Morning</option>
 		        <option value="afternoon">Afternoon</option>
 		        <option value="evening">Evening</option>
 		      </select>
-		    </div>
+		    </form>
 		    <!-- end of second div -->
 		    <div class="third">
 		      <p>3. Locate Issue in Map</p>
-		      <button type="button" class="closeIt">Locate</button>
+		      <input type="submit" class="locate closeIt" value="Locate"></i>
 		    </div>
 		  </div>
 		</div>
