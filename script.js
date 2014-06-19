@@ -16,8 +16,8 @@ jQuery(function($){
 	    	var bikeLayer = new google.maps.BicyclingLayer();
 	    	bikeLayer.setMap(map);
 
-        $.ajax({
-            url: "_drupal/api/hot_spot.json",
+        var hMap = (function(){$.ajax({
+            url: "./_drupal/api/hot_spot.json",
             dataType: "json",
             success: function(data) {
                 var yieldPoints = [];
@@ -27,8 +27,9 @@ jQuery(function($){
                 var heatMap = new google.maps.visualization.HeatmapLayer({ data: yieldPoints });
                 heatMap.setMap(map);
             }
+          });
         });
-
+        hMap();
         $("form.options").on("submit", function(e){
           var obstacle = $("select.obstacle").val();
           var time = $( "select.time" ).val();
@@ -65,6 +66,7 @@ jQuery(function($){
                  data: nodeData,
                  success: function(data){
                   alert("thanks");
+                  hMap();
                  }
                });
               google.maps.event.clearInstanceListeners(map);
