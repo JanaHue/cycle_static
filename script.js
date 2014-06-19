@@ -77,7 +77,7 @@ jQuery(function($){
                  type: "POST",
                  data: nodeData,
                  success: function(data){
-                  alert("thanks");
+                  // alert("thanks");
                   hMap();
                  }
                });
