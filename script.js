@@ -4,29 +4,6 @@ jQuery(function($){
 	var markerArray = [];
 	function initialize() {
 
-        // heatspot data
-        var taxiData = [
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.64678970890272, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        new google.maps.LatLng(43.646, -79.39536094665527),
-        ]
 	    	var mapOptions = {
 	      center: new google.maps.LatLng(43.654638 ,-79.382772),
 	      zoom: 14
@@ -36,6 +13,8 @@ jQuery(function($){
 
 	    	var bikeLayer = new google.maps.BicyclingLayer();
 	    	bikeLayer.setMap(map);
+
+
 
         $.ajax({
             url: "_drupal/api/hot_spot.json",
@@ -106,9 +85,19 @@ jQuery(function($){
   			};
   			directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
 
-        // var infowindow = new google.maps.InfoWindow();
-        // Instantiate an info window to hold step text.
-  			// stepDisplay = new google.maps.InfoWindow();
+        // Autocomplete
+        var input = /** @type {HTMLInputElement} */(
+        document.getElementById('start'));
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        var input2 = (document.getElementById('end'));
+
+        var autocomplete2 = new google.maps.places.Autocomplete(input2);
+        google.maps.event.addListener(autocomplete, function() {
+         return;
+        });
+        google.maps.event.addListener(autocomplete2, 'place_changed', function() {
+        return;
+        });
 
 		};// Close Initialize
 
