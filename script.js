@@ -1,5 +1,7 @@
 jQuery(function($){
-	$(".overlay2").show();
+  if (document.cookie != "noshow") {
+	 $(".overlay2").show();
+  }
 	var map, pointarray, heatmap, directionsDisplay, directionsService, stepDisplay;
 	var markerArray = [];
 	function initialize() {
@@ -161,6 +163,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			$closeModal();
 		}
 	});
+
+  $(".overlay").on("click", function(e){
+    if($(e.target).hasClass("permclose")){
+      $closeModal();
+      document.cookie = "noshow";
+    }
+  });
 
 	$("form.search").on("submit",function(e){
     e.preventDefault();
