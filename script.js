@@ -15,7 +15,7 @@ jQuery(function($){
 	    	bikeLayer.setMap(map);
 
         $.ajax({
-            url: "_drupal/api/hot_spot.json",
+            url: "./_drupal/api/hot_spot.json",
             dataType: "json",
             success: function(data) {
                 var yieldPoints = [];
