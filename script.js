@@ -1,5 +1,5 @@
 jQuery(function($){
-  if (document.cookie != "noshow") {
+  if (document.cookie != "awesome") {
 	 $(".overlay2").show();
   }
 	var map, pointarray, heatmap, directionsDisplay, directionsService, stepDisplay;
@@ -167,7 +167,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
   $(".overlay").on("click", function(e){
     if($(e.target).hasClass("permclose")){
       $closeModal();
-      document.cookie = "noshow";
+      var date = new Date();
+      date.setTime(date.getTime()+31536000000);
+      document.cookie = "awesome; expires =" + date;
     }
   });
 
