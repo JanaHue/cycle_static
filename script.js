@@ -1,7 +1,19 @@
+function getCookie(NameOfCookie)
+{ if (document.cookie.length > 0) 
+{ begin = document.cookie.indexOf(NameOfCookie+"="); 
+if (begin != -1) 
+{ begin += NameOfCookie.length+1; 
+end = document.cookie.indexOf(";", begin);
+if (end == -1) end = document.cookie.length;
+return unescape(document.cookie.substring(begin, end)); } 
+}
+return null; 
+}
+
 jQuery(function($){
-  if (document.cookie != "noshow") {
+   if (getCookie("awesome") == null) {
 	 $(".overlay2").show();
-  }
+   }
 	var map, pointarray, heatmap, directionsDisplay, directionsService, stepDisplay;
 	var markerArray = [];
 	function initialize() {
@@ -16,7 +28,7 @@ jQuery(function($){
 	    	var bikeLayer = new google.maps.BicyclingLayer();
 	    	bikeLayer.setMap(map);
 
-        $.ajax({
+        var hMap = (function(){$.ajax({
             url: "./_drupal/api/hot_spot.json",
             dataType: "json",
             success: function(data) {
@@ -27,8 +39,9 @@ jQuery(function($){
                 var heatMap = new google.maps.visualization.HeatmapLayer({ data: yieldPoints });
                 heatMap.setMap(map);
             }
+          });
         });
-
+        hMap();
         $("form.options").on("submit", function(e){
           var obstacle = $("select.obstacle").val();
           var time = $( "select.time" ).val();
@@ -65,6 +78,7 @@ jQuery(function($){
                  data: nodeData,
                  success: function(data){
                   alert("thanks");
+                  hMap();
                  }
                });
               google.maps.event.clearInstanceListeners(map);
@@ -164,10 +178,17 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		}
 	});
 
+  function setCookie(NameOfCookie, value, expiredays) 
+{ var ExpireDate = new Date ();
+ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
+document.cookie = NameOfCookie + "=" + escape(value) + 
+((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());
+}
+
   $(".overlay").on("click", function(e){
     if($(e.target).hasClass("permclose")){
       $closeModal();
-      document.cookie = "noshow";
+      setCookie("awesome", "val", 100);
     }
   });
 
