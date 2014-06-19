@@ -30,18 +30,28 @@ $min:333;
 $mid:555;
 $max:999;
 
+$black: #282828;
+$white: #fffffd;
+$grey: #b2b2b2;
+$blue: #3c85ef;
 
-/*====================================================================================
+$aserif: 'Source Sans Pro', sans-serif;
+
+
+/*===========================================================
 		                          Base Styles
-====================================================================================*/
+===========================================================*/
 html {
-  height: 100%
+  height: 100%;
 }
 
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: $aserif;
+  color:$black;
+  position: relative;
 }
 
 #map-canvas {
@@ -57,104 +67,58 @@ ul {
 	list-style-type: none;
 	padding: 0;
 }
-
-/*====================================================================================
-		                          Header
-====================================================================================*/
-header {
-	padding: 25px;
-	padding-bottom: 0;
-	background: white;
-	z-index: $max;
-}
-
+/*==========================================================
+                              Typography
+==========================================================*/
 h1 {
-	border: 0;
-	font-size: 0;
-	color: transparent;
-	width: 80px;
-	height: 48px;
-	background: url("../i/bike.png") no-repeat;
-	-webkit-background-size: 80px 48px;
-	background-size: 80px 48px;
-	display: inline-block;
-	position: relative;
-	bottom: 29px;
+  font-size: 2.4rem;
+}
+h2 {
+  font-size: 2.4rem;
 }
 
-form {
-	display: inline-block;
-	padding: 15px 75px;
-	label {
-		margin-right: 5px;
-	}
-
-	label[for="end"]{
-		margin-left: 15px;
-	}
+p {
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
-nav {
-	display: inline-block;
-	float: right;
-	.nav {
-		font-size: 35px;
-		margin: 0;
-	}
+a {
+  color: $grey;
+  text-decoration: none;
+  font-size: .9rem;
 }
 
-.item2 {
-	position: relative;
-	font-size: 18px;
-
+/*==========================================================
+		                          Header
+==========================================================*/
+.search {
+  position: absolute;
+  z-index: $max;
 }
-
-ul li.menuItem {
-	display: inline-block;
-	cursor: pointer;
-}
-
-ul li.menuItem:nth-child(2n){
-	margin: 0 50px;
-}
-
-ul.legend {
-	z-index: $max;
-	display: none;
-	position: absolute;
-	font-size: 20px;
-	width: 190px;
-	border: 1px solid rgb(211, 211, 211);
-	padding: 7px;
-	left: -70px;
-	background: white;
-	li {
-		padding: 5px 0;
-	}
-}
-
-i {
-	margin-right: 5px;
-}
-.trail {
-	color:forestgreen;
-}
-.lane {
-	color:limegreen;
-}
-.friendly{
-	color:lawngreen;
-}
-.trouble {
-	color:orange;
-}
-
-.pac-container {
-        font-family: Roboto;
+ul.nav {
+  position: absolute;
+  z-index: $max;
+  right: 105px;
+  li {
+    position: relative;
+    display: inline-block;
+    padding: 0 25px;
+    ul.legend {
+      position: absolute;
+      width: 200px;
+      background: $white;
+      padding: 15px;
+      display: none;
+      box-shadow: 0 0 2px rgba(0,0,0,0.1);
+      li {
+        display: list-item;
       }
-/*====================================================================================
+    }
+  }
+}
+/*==========================================================
 		                          Modals
-====================================================================================*/
+==========================================================*/
 
 .overlay {
 	z-index: $max;
@@ -164,79 +128,86 @@ i {
   right: 0;
   left: 0;
   display: none;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.4);
   .modal{
     height: 400px;
     width: 600px;
-    border: 1px solid black;
-    background: white;
-    margin: 70px auto;
-    button {
-    	display: block;
-    	margin: 0 auto;
+    background: $white;
+    margin: 10% auto;
+    text-align: center;
+    padding: 26px;
+    position: relative;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    img.close{
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
     }
-    h2{
-			font-size: 2em;
+  }
+}
 
+.modal1 {
+  ol {
+    text-align: left;
+    width: 290px;
+    margin: auto;
+    li {
+      font-size: 1.2rem;
     }
-    .close{
-      margin: 10px;
-  	  height: 30px;
-  	  width: 30px;
-  	  float: right;
+    li:nth-child(2) {
+      padding: 20px 0;
     }
-    p{
-		clear:both;
-		text-align: center;
-		}
-
-	}
-	.modal2{
-
-	}
-	.littleBike{
-		width:15%;
-		height:auto;
-		float: left;
-		margin:4%;
-		margin-right:none;
-		margin-bottom:none;
-	}
-	.firstP{
-		font-size: 1.4em;
-	}
-	.reportIssue{
-			margin:40px;
-	}
+  }
+  input[type="submit"] {
+    background: $blue;
+    color:$white;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+    border: 0;
+    font-weight: 700;
+    height: 37px;
+    width: 50px;
+    margin: 7px 80px;
+  }
+}
+/*==========================================================
+                              Forms
+==========================================================*/
+input[type="text"], select {
+  border: 0;
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  font-family: $aserif;
+  font-weight: 200;
+  font-size: 1.2rem;
+  padding: 7px 10px;
+}
+label[for="start"], label[for="end"] {
+  visibility: hidden;
 }
 
-.options{
-  text-align: center;
-  top: 100px;
-  position: relative;
+.search {
+  left: 45px;
+  input[type="submit"] {
+    background: $blue;
+    color:$white;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+    border: 0;
+    font-weight: 700;
+    height: 37px;
+    width: 50px;
+    margin: 10px 0
+  }
+  label {
+    visibility: hidden;
+  }
+  input[class="end"]{
+    margin-top: -7px;
+  }
+  input[type="text"]{
+    width: 300px;
+  }
 }
 
-.welcome{
-  text-align: center;
-}
-
-.intro{
-  clear: right;
-  margin-left: 1px;
-  margin-right: auto;
-}
-
-.left-arrow{
-  height: 40px;
-  position: relative;
-  bottom: 105px;
-}
-
-.right-arrow{
-  height: 40px;
-  position: relative;
-    bottom: 105px;
-}
-#fake{
-	display:inline;
+select {
+  margin-top: 7px;
 }

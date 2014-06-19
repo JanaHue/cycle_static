@@ -163,16 +163,19 @@ img {
 /*====================================================================================
 		                          Variables
 ====================================================================================*/
-/*====================================================================================
+/*===========================================================
 		                          Base Styles
-====================================================================================*/
+===========================================================*/
 html {
   height: 100%; }
 
 body {
   height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #282828;
+  position: relative; }
 
 #map-canvas {
   height: 100%; }
@@ -185,85 +188,52 @@ ul {
   list-style-type: none;
   padding: 0; }
 
-/*====================================================================================
+/*==========================================================
+                              Typography
+==========================================================*/
+h1 {
+  font-size: 2.4rem; }
+
+h2 {
+  font-size: 2.4rem; }
+
+p {
+  font-size: 1.2rem;
+  font-weight: 300; }
+
+a {
+  color: #b2b2b2;
+  text-decoration: none;
+  font-size: .9rem; }
+
+/*==========================================================
 		                          Header
-====================================================================================*/
-header {
-  padding: 25px;
-  padding-bottom: 0;
-  background: white;
+==========================================================*/
+.search {
+  position: absolute;
   z-index: 999; }
 
-h1 {
-  border: 0;
-  font-size: 0;
-  color: transparent;
-  width: 80px;
-  height: 48px;
-  background: url("../i/bike.png") no-repeat;
-  -webkit-background-size: 80px 48px;
-  background-size: 80px 48px;
-  display: inline-block;
-  position: relative;
-  bottom: 29px; }
-
-form {
-  display: inline-block;
-  padding: 15px 75px; }
-  form label {
-    margin-right: 5px; }
-  form label[for="end"] {
-    margin-left: 15px; }
-
-nav {
-  display: inline-block;
-  float: right; }
-  nav .nav {
-    font-size: 35px;
-    margin: 0; }
-
-.item2 {
-  position: relative;
-  font-size: 18px; }
-
-ul li.menuItem {
-  display: inline-block;
-  cursor: pointer; }
-
-ul li.menuItem:nth-child(2n) {
-  margin: 0 50px; }
-
-ul.legend {
-  z-index: 999;
-  display: none;
+ul.nav {
   position: absolute;
-  font-size: 20px;
-  width: 190px;
-  border: 1px solid lightgray;
-  padding: 7px;
-  left: -70px;
-  background: white; }
-  ul.legend li {
-    padding: 5px 0; }
+  z-index: 999;
+  right: 105px; }
+  ul.nav li {
+    position: relative;
+    display: inline-block;
+    padding: 0 25px; }
+    ul.nav li ul.legend {
+      position: absolute;
+      width: 200px;
+      background: #fffffd;
+      padding: 15px;
+      display: none;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); }
+      ul.nav li ul.legend li {
+        display: list-item; }
 
-i {
-  margin-right: 5px; }
-
-.trail {
-  color: forestgreen; }
-
-.lane {
-  color: limegreen; }
-
-.friendly {
-  color: lawngreen; }
-
-.trouble {
-  color: orange; }
-
-/*====================================================================================
+/*==========================================================
 		                          Modals
-====================================================================================*/
+==========================================================*/
 .overlay {
   z-index: 999;
   position: fixed;
@@ -272,60 +242,71 @@ i {
   right: 0;
   left: 0;
   display: none;
-  background: rgba(0, 0, 0, 0.6); }
+  background: rgba(0, 0, 0, 0.4); }
   .overlay .modal {
     height: 400px;
     width: 600px;
-    border: 1px solid black;
-    background: white;
-    margin: 70px auto; }
-    .overlay .modal button {
-      display: block;
-      margin: 0 auto; }
-    .overlay .modal h2 {
-      font-size: 2em; }
-    .overlay .modal .close {
-      margin: 10px;
-      height: 30px;
-      width: 30px;
-      float: right; }
-    .overlay .modal p {
-      clear: both;
-      text-align: center; }
-  .overlay .littleBike {
-    width: 15%;
-    height: auto;
-    float: left;
-    margin: 4%;
-    margin-right: none;
-    margin-bottom: none; }
-  .overlay .firstP {
-    font-size: 1.4em; }
-  .overlay .reportIssue {
-    margin: 40px; }
+    background: #fffffd;
+    margin: 10% auto;
+    text-align: center;
+    padding: 26px;
+    position: relative;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2); }
+    .overlay .modal img.close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer; }
 
-.options {
-  text-align: center;
-  top: 100px;
-  position: relative; }
+.modal1 ol {
+  text-align: left;
+  width: 290px;
+  margin: auto; }
+  .modal1 ol li {
+    font-size: 1.2rem; }
+  .modal1 ol li:nth-child(2) {
+    padding: 20px 0; }
+.modal1 input[type="submit"] {
+  background: #3c85ef;
+  color: #fffffd;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+  border: 0;
+  font-weight: 700;
+  height: 37px;
+  width: 50px;
+  margin: 7px 80px; }
 
-.welcome {
-  text-align: center; }
+/*==========================================================
+                              Forms
+==========================================================*/
+input[type="text"], select {
+  border: 0;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 200;
+  font-size: 1.2rem;
+  padding: 7px 10px; }
 
-.intro {
-  clear: right;
-  margin-left: 1px;
-  margin-right: auto; }
+label[for="start"], label[for="end"] {
+  visibility: hidden; }
 
-.left-arrow {
-  height: 40px;
-  position: relative;
-  bottom: 105px; }
+.search {
+  left: 45px; }
+  .search input[type="submit"] {
+    background: #3c85ef;
+    color: #fffffd;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+    border: 0;
+    font-weight: 700;
+    height: 37px;
+    width: 50px;
+    margin: 10px 0; }
+  .search label {
+    visibility: hidden; }
+  .search input[class="end"] {
+    margin-top: -7px; }
+  .search input[type="text"] {
+    width: 300px; }
 
-.right-arrow {
-  height: 40px;
-  position: relative;
-  bottom: 105px; }
-
-#fake {
-  display: inline; }
+select {
+  margin-top: 7px; }
