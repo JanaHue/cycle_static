@@ -103,6 +103,9 @@ ul.nav {
     position: relative;
     display: inline-block;
     padding: 0 25px;
+    svg {
+      stroke: $white;
+    }
     ul.legend {
       position: absolute;
       width: 200px;
@@ -211,3 +214,4 @@ label[for="start"], label[for="end"] {
 select {
   margin-top: 7px;
 }
+
