@@ -14,8 +14,6 @@ jQuery(function($){
 	    	var bikeLayer = new google.maps.BicyclingLayer();
 	    	bikeLayer.setMap(map);
 
-
-
         $.ajax({
             url: "_drupal/api/hot_spot.json",
             dataType: "json",
@@ -28,7 +26,6 @@ jQuery(function($){
                 heatMap.setMap(map);
             }
         });
-
 
         $("form.options").on("submit", function(e){
           var obstacle = $("select.obstacle").val();
@@ -133,7 +130,6 @@ function calcRoute() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-
 	//show legend
 	$(".item2").on("click", function(){
 		$("ul.legend").slideToggle(100);
@@ -149,7 +145,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	$(".item3").on("click", function(){
 		$(".overlay2").fadeIn();
 	});
-
 
 	var $closeModal = function(){
 		$(".overlay").fadeOut();
